@@ -4,9 +4,10 @@ class Curso (val nomeCurso: String,
              )
  {
 
-         var professorTitular = ProfessorTitular("","", 0, "")
-         var professorAdjunto = ProfessorAdjunto("", "", 0, 0)
+         var professorTitular = ProfessorTitular("Não atribuído","", 0, "")
+         var professorAdjunto = ProfessorAdjunto("Não atribuído", "", 0, 0)
          var alunosMatriculados = mutableListOf<Aluno>()
+
 
 
      fun adicionarUmAluno(umAluno: Aluno): Boolean {
@@ -25,5 +26,9 @@ class Curso (val nomeCurso: String,
          }
      }
 
+     override fun toString(): String {
+         return "Curso: $nomeCurso | código=$codigoCurso | Máximo de Alunos=$qtdMaxAlunos | Titular=${professorTitular.nome} ${professorTitular.sobrenome} | Adjunto=${professorAdjunto.nome} ${professorAdjunto.sobrenome}, Alunos Matriculados=${alunosMatriculados.size}"
+     }
 
-}
+
+ }
