@@ -1,0 +1,1 @@
+class Aluno (nome:String, sobrenome:String, val codigoAluno: Int): Pessoa(nome, sobrenome)
