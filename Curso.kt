@@ -7,12 +7,19 @@ class Curso (val nomeCurso: String,
  {
 
      fun adicionarUmAluno(umAluno: Aluno): Boolean {
-         //TO-DO
-         return true
+         if (alunosMatriculados.size >= qtdMaxAlunos) {
+             return false
+         } else {
+             alunosMatriculados.add(umAluno)
+             return true
+         }
+
      }
 
      fun excluirUmAluno(umAluno: Aluno) {
-         //TO-DO
+         if (alunosMatriculados.contains(umAluno)) {
+             alunosMatriculados.remove(umAluno)
+         }
      }
 
 

@@ -1,9 +1,10 @@
 abstract class Professor (nome:String,
                           sobrenome: String,
-                          val codigoProfessor: Int): Pessoa (nome, sobrenome) {
+                          val codigoProfessor: Int,
+                          var tempoDeCasa: Int): Pessoa (nome, sobrenome) {
 
     init {
-        var tempoDeCasa = 0
+        tempoDeCasa = 0
     }
 
 }
