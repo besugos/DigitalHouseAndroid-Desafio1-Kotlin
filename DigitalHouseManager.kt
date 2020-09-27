@@ -1,9 +1,9 @@
 class DigitalHouseManager {
 
-    var listaDeAlunos = mutableListOf<Aluno>()
-    var listaDeProfessores = mutableListOf<Professor>()
-    var listaDeCursos = mutableListOf<Curso>()
-    var listaDeMatriculas = mutableListOf<Matricula>()
+    var listaDeAlunos = mutableSetOf<Aluno>()
+    var listaDeProfessores = arrayListOf<Professor>()
+    var listaDeCursos = mutableSetOf<Curso>()
+    var listaDeMatriculas = mutableSetOf<Matricula>()
 
 
     fun registrarCurso(nome:String, codigoCurso: Int, quantidadeMaximaDeAlunos: Int) {
@@ -42,11 +42,14 @@ class DigitalHouseManager {
     }
 
     fun excluirProfessor(codigoProfessor: Int) {
-        for (professor in listaDeProfessores) {
-            if (professor.codigoProfessor == codigoProfessor) {
-                listaDeProfessores.remove(professor)
+
+        for (i in 0 until listaDeProfessores.size){
+            if (listaDeProfessores[i].codigoProfessor == codigoProfessor) {
+                listaDeProfessores.remove(listaDeProfessores[1])
+                break
             }
         }
+
     }
 
     fun matricularAluno(nome:String, sobrenome:String, codigoAluno: Int) {

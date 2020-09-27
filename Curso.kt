@@ -27,7 +27,8 @@ class Curso (val nomeCurso: String,
      }
 
      override fun toString(): String {
-         return "Curso: $nomeCurso | código=$codigoCurso | Máximo de Alunos=$qtdMaxAlunos | Titular=${professorTitular.nome} ${professorTitular.sobrenome} | Adjunto=${professorAdjunto.nome} ${professorAdjunto.sobrenome}, Alunos Matriculados=${alunosMatriculados.size}"
+         return "Curso: $nomeCurso | código=$codigoCurso | Máximo de Alunos=$qtdMaxAlunos | Titular=${professorTitular.nome} ${professorTitular.sobrenome} | " +
+                 "Adjunto=${professorAdjunto.nome} ${professorAdjunto.sobrenome} | Alunos Matriculados=${alunosMatriculados.size}"
      }
 
 
