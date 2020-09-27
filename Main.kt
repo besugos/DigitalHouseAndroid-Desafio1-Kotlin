@@ -35,10 +35,39 @@ fun main() {
     println("Criação de Cursos:")
 
     val cursoHistoria = Curso("História", 401, 3)
-    val cursoAritmetica = Curso("Aritmética", 402, 3)
+    val cursoAritmetica = Curso("Aritmética", 402, 2)
 
     println(cursoHistoria)
     println(cursoAritmetica)
+
+    println()
+    println("Adição de alunos a um curso (método da classe Curso):")
+    println("Para esse teste, tentaremos incluir 3 alunos no curso Aritmética (cujo máximo permitido é de dois alunos.")
+    println("Inicialmente, o curso não tem nenhum aluno matriculado: ${cursoAritmetica.alunosMatriculados}")
+    println("Adicionando o primeiro aluno (resultado esperado: 'true'): ${cursoAritmetica.adicionarUmAluno(aluno1)}")
+    println("Adicionando o segundo aluno (resultado esperado: 'true'): ${cursoAritmetica.adicionarUmAluno(aluno2)}")
+    println("Adicionando o terceiro aluno (resultado esperado: 'false', pois excede o máximo de alunos para o curso): ${cursoAritmetica.adicionarUmAluno(aluno3)}")
+    println("Após as duas adições bem sucedidas, espera-se que o curso conte com 2 alunos matriculados: ${cursoAritmetica.alunosMatriculados.size}")
+    println("Testaremos agora se os alunos adicionados foram corretamente armazenados. Os alunos adicionados foram:")
+    println(aluno1)
+    println(aluno2)
+    println("E os alunos matriculados são: ")
+    for (aluno in cursoAritmetica.alunosMatriculados) {
+        println(aluno)
+    }
+
+    println()
+    println("Agora testaremos o método excluir aluno. Para isso, solicitaremos a exclusão do aluno de código 101: ")
+    cursoAritmetica.excluirUmAluno(aluno1)
+    println("Para checar se o método foi bem sucedido, listaremos a quantidade de alunos matriculados e os dados dos alunos matriculados no curso:")
+    println("Quantidade de alunos (resultado esperado: 1): ${cursoAritmetica.alunosMatriculados.size}")
+    println("Dados do aluno matriculado (espera-se apenas um aluno, o de código 102): ")
+    for (aluno in cursoAritmetica.alunosMatriculados) {
+        println(aluno)
+    }
+
+
+
 
 
 
