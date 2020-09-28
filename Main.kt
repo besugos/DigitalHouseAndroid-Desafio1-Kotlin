@@ -106,9 +106,11 @@ fun main() {
     println("-----------------------------------------------------------------------------------------------------------------------------------------")
     println()
     println("Teste do método registrarProfessorAdjunto(). Para isso utilizaremos os professores adjuntos previamente criados.")
+    println("Iniciamos mostrando o conteúdo da Lista de Professores, que deve estar vazia:")
+    println(digitalHouseManager.listaDeProfessores)
     digitalHouseManager.registrarProfessorAdjunto(adjunto1.nome, adjunto1.sobrenome, adjunto1.codigoProfessor, adjunto1.horasMonitoria)
     digitalHouseManager.registrarProfessorAdjunto(adjunto2.nome, adjunto2.sobrenome, adjunto2.codigoProfessor, adjunto2.horasMonitoria)
-    println("Após o registro dos professores adjuntos, espera-se agora que a Lista de Professores agora os contenha:\n")
+    println("\nApós o registro dos professores adjuntos, espera-se agora que a Lista de Professores agora os contenha:\n")
     for (professor in digitalHouseManager.listaDeProfessores) {
         println(professor)
     }
@@ -125,13 +127,84 @@ fun main() {
     }
     println("-----------------------------------------------------------------------------------------------------------------------------------------")
     println()
-    println("Teste do método excluirProfessor(). Para isso excluiremos o Professor Adjunto ${adjunto2.nome} ${adjunto2.sobrenome}, com código ${adjunto2.codigoProfessor}.")
+    println("Teste do método excluirProfessor(). Para isso excluiremos o Professor Adjunto ${adjunto2.nome} ${adjunto2.sobrenome}, " +
+            "com código ${adjunto2.codigoProfessor}, e o Professor Titular ${titular2.nome} ${titular2.sobrenome}, com código ${titular2.codigoProfessor}")
+    digitalHouseManager.excluirProfessor(titular2.codigoProfessor)
     digitalHouseManager.excluirProfessor(adjunto2.codigoProfessor)
     println("Como resultado, espera-se que a lista contenha apenas os demais professores:\n")
     for (professor in digitalHouseManager.listaDeProfessores) {
         println(professor)
     }
+    println("-----------------------------------------------------------------------------------------------------------------------------------------")
+    println()
+    println("Teste do primeiro método marticularAluno(). Para isso utilizaremos os alunos previamente criados.")
+    println("O objetivo do método é incluir os alunos na Lista de Alunos. Iniciamos mostrando o conteúdo da Lista de Alunos, que deve estar vazia:")
+    println(digitalHouseManager.listaDeAlunos)
+    digitalHouseManager.matricularAluno(aluno1.nome, aluno1.sobrenome, aluno1.codigoAluno)
+    digitalHouseManager.matricularAluno(aluno2.nome, aluno2.sobrenome, aluno2.codigoAluno)
+    digitalHouseManager.matricularAluno(aluno3.nome, aluno3.sobrenome, aluno3.codigoAluno)
+    digitalHouseManager.matricularAluno(aluno4.nome, aluno4.sobrenome, aluno4.codigoAluno)
+    println("\nApós o registro dos alunos, espera-se agora que a Lista de Alunos agora os contenha:\n")
+    for (aluno in digitalHouseManager.listaDeAlunos) {
+        println(aluno)
+    }
+    println("-----------------------------------------------------------------------------------------------------------------------------------------")
+    println()
+    println("Teste do segundo método marticularAluno(). Para isso utilizaremos os alunos previamente criados e já adicionados à Lista de Alunos.")
+    println("O objetivo do método é matricular o aluno em um Curso, se possível. Iniciamos mostrando os alunos matriculados no Curso Aritmética, que deve estar vazia:")
 
+    for (curso in digitalHouseManager.listaDeCursos) {
+        println("${curso.nomeCurso}: ${curso.alunosMatriculados}")
+    }
+
+    println()
+    println("O teste consiste em tentar matricular os quatro alunos criados no curso Aritmética. O que se espera é que as duas primeiras tentativas dêem certo, e as duas seguintes falhem, por exceder o máximo de alunos permitidos no curso.")
+    println("O método também deve inserir cada matrícula realizada com sucesso na lista de matrículas. Mostramos aqui o estado inicial da lista de Matrículas, que deve também estar vaia:")
+    println(digitalHouseManager.listaDeMatriculas)
+    println()
+    println("Inclusão do aluno1 (espera-se sucesso):")
+    digitalHouseManager.matricularAluno(aluno1.codigoAluno, cursoAritmetica.codigoCurso)
+    println()
+    println("Inclusão do aluno2 (espera-se sucesso):")
+    digitalHouseManager.matricularAluno(aluno2.codigoAluno, cursoAritmetica.codigoCurso)
+    println()
+    println("Inclusão do aluno3 (espera-se falha):")
+    digitalHouseManager.matricularAluno(aluno3.codigoAluno, cursoAritmetica.codigoCurso)
+    println()
+    println("Inclusão do aluno4 (espera-se falha):")
+    digitalHouseManager.matricularAluno(aluno4.codigoAluno, cursoAritmetica.codigoCurso)
+    println()
+    println("O estado final esperado é que a lista de alunos do curso Aritmética contenha os dois primeiros alunos:")
+    for(curso in digitalHouseManager.listaDeCursos) {
+        for (aluno in curso.alunosMatriculados){
+            println(aluno)
+        }
+    }
+    println()
+    println("Espera-se também que a Lista de Matrículas contenha as duas matrículas efetuadas com sucesso: ")
+    for (matricula in digitalHouseManager.listaDeMatriculas) {
+        println(matricula)
+    }
+
+    println("-----------------------------------------------------------------------------------------------------------------------------------------")
+    println()
+    println("Teste do método alocarProfessores(). Para isso, utilizaremos os professores já criados e registrados:")
+    for (professor in digitalHouseManager.listaDeProfessores) {
+        println(professor)
+    }
+    println()
+    println("Adicionaremos ambos ao curso Aritmética, que no momento não possui professores atribuídos:")
+    for (curso in digitalHouseManager.listaDeCursos) {
+        println(curso)
+    }
+
+    digitalHouseManager.alocarProfessores(cursoAritmetica.codigoCurso, titular1.codigoProfessor, adjunto1.codigoProfessor)
+
+    println()
+    println("Então, alocamos os professores no curso, que agora devem aparecer atribúidos no curso: ")
+    for (curso in digitalHouseManager.listaDeCursos) {
+        println(curso)
+    }
 
 
 

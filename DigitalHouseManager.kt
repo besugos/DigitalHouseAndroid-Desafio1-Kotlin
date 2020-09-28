@@ -45,7 +45,7 @@ class DigitalHouseManager {
 
         for (i in 0 until listaDeProfessores.size){
             if (listaDeProfessores[i].codigoProfessor == codigoProfessor) {
-                listaDeProfessores.remove(listaDeProfessores[1])
+                listaDeProfessores.remove(listaDeProfessores[i])
                 break
             }
         }
